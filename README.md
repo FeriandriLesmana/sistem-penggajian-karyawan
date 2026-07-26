@@ -75,11 +75,20 @@ Aplikasi dapat diakses melalui browser pada http://localhost:8000.
 
 Setelah aplikasi berjalan, Anda dapat masuk ke panel admin menggunakan kredensial berikut:
 
-Email: admin@admin.com
+Akun Admin
 
-Password: password
+Email: admin@dhiarfa.com
+Password: admin
 
-(Catatan: Pastikan Anda sudah menjalankan seeder jika akun ini dibuat melalui database seeder).
+Akun Owner
+
+Email: owner@dhiarfa.com
+Password: owner
+
+Akun Karyawan
+
+Email: slamet@dhiarfa.com
+Password: slamet
 
 👨‍💻 Penulis
 
