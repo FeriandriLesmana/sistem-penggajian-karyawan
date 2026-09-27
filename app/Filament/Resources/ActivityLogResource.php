@@ -42,18 +42,31 @@ class ActivityLogResource extends Resource
                         'updated' => 'warning',
                         'deleted' => 'danger',
                         default => 'gray',
-                    }),
-                    
+                    })
+                
+                ->formatStateUsing(fn (string $state): string => match ($state) {
+                    'created' => 'Dibuat',
+                    'updated' => 'Diperbarui',
+                    'deleted' => 'Dihapus',
+                    default => $state, 
+                }),
+
                 TextColumn::make('description')
-                    ->label('Keterangan'),
-                    
+                    ->label('Keterangan')
+                    ->formatStateUsing(fn (string $state): string => str_replace(
+                    ['di-created', 'di-updated', 'di-deleted', 'created', 'updated', 'deleted'],
+                    ['dibuat', 'diperbarui', 'dihapus', 'dibuat', 'diperbarui', 'dihapus'],
+                    $state
+                    )),
+
                 TextColumn::make('subject_type')
                     ->label('Tabel Target')
                     ->formatStateUsing(fn ($state) => class_basename($state)),
             ])
             ->defaultSort('created_at', 'desc') // Mengurutkan dari yang terbaru
             ->actions([
-                Tables\Actions\ViewAction::make(), // Cuma bisa DILIHAT, tidak bisa diedit
+                Tables\Actions\ViewAction::make()
+                ->label('Lihat'),
             ])
             ->bulkActions([]);
     }

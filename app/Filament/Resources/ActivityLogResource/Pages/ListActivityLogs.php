@@ -9,7 +9,7 @@ use Filament\Resources\Pages\ListRecords;
 class ListActivityLogs extends ListRecords
 {
     protected static string $resource = ActivityLogResource::class;
-
+    protected static ?string $title = 'Log Aktivitas';
     protected function getHeaderActions(): array
     {
         return [

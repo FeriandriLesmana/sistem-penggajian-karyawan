@@ -10,10 +10,12 @@ class ListPotongans extends ListRecords
 {
     protected static string $resource = PotonganResource::class;
 
+    protected static ?string $title = 'Data Potongan';
+
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make(),
+            CreateAction::make()->label('Tambah Potongan'),
         ];
     }
 }

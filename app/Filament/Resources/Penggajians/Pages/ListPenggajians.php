@@ -15,8 +15,8 @@ class ListPenggajians extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make(),
-        
+            CreateAction::make()
+            ->label('Tambah Data Penggajian'),
             // TOMBOL EXPORT EXCEL (MODIFIKASI LENGKAP)
             ExportAction::make() 
                 ->label('Download Laporan Lengkap')

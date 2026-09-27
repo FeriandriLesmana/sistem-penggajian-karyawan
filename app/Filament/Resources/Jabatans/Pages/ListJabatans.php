@@ -10,10 +10,13 @@ class ListJabatans extends ListRecords
 {
     protected static string $resource = JabatanResource::class;
 
+    protected static ?string $title = 'Data Jabatan';
+
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make(),
+            CreateAction::make()
+                ->label('Tambah Jabatan'),
         ];
     }
 }

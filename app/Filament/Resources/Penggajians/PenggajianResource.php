@@ -42,6 +42,7 @@ class PenggajianResource extends Resource
                             ->relationship('karyawan', 'nama_lengkap')
                             ->label('Nama Karyawan')
                             ->required()
+                            ->placeholder('Pilih karyawan')
                             ->searchable()
                             ->preload()
                             ->live() // PENTING: Agar validasi jalan saat user pilih nama
@@ -273,7 +274,8 @@ class PenggajianResource extends Resource
                     }),
 
                 // TOMBOL 1: EDIT
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                ->label('Ubah'),
 
                 // TOMBOL 2: DOWNLOAD PDF (INI KODINGAN BARUNYA)
                 Tables\Actions\Action::make('cetak_slip')
@@ -295,7 +297,8 @@ class PenggajianResource extends Resource
                     }),
 
                 // TOMBOL 3: DELETE
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                ->label('Hapus'),
 
                 Tables\Actions\Action::make('setujui')
                     ->label('Setujui Gaji')
@@ -310,7 +313,8 @@ class PenggajianResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                    ->label('Hapus Terpilih'),
                 ]),
             ]);
     }

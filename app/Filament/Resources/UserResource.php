@@ -24,6 +24,11 @@ class UserResource extends Resource
     protected static ?int $navigationSort = 1;
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    // 👇 1. INI TAMBAHAN UNTUK UBAH NAMA MENU SIDEBAR & BREADCRUMB 👇
+    protected static ?string $navigationLabel = 'Pengguna';
+    protected static ?string $pluralModelLabel = 'Pengguna';
+    // 👆 ======================================================== 👆
+
     public static function form(Form $form): Form
     {
         return $form
@@ -43,7 +48,7 @@ class UserResource extends Resource
                 TextInput::make('password')
                     ->label('Password')
                     ->password()
-                    ->revealable() // Biar bisa klik ikon mata untuk lihat password
+                    ->revealable() 
                     ->dehydrateStateUsing(fn ($state) => Hash::make($state))
                     ->dehydrated(fn ($state) => filled($state))
                     ->required(fn (string $context): bool => $context === 'create'),
@@ -71,7 +76,7 @@ class UserResource extends Resource
 
                 TextColumn::make('roles.name')
                     ->label('Role')
-                    ->badge() // Biar tampilannya kotak-kotak berwarna 
+                    ->badge() 
                     ->color('info'),
 
                 TextColumn::make('created_at')
@@ -79,16 +84,17 @@ class UserResource extends Resource
                     ->dateTime('d M Y H:i') 
                     ->sortable(),
             ])
-            // ... biarkan bagian filters, actions, dan bulkActions di bawahnya tetap ada
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                ->label('Ubah'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                    ->label('Hapus Terpilih'),
                 ]),
             ]);
     }

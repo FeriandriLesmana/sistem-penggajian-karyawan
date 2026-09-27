@@ -10,10 +10,13 @@ class ListKaryawans extends ListRecords
 {
     protected static string $resource = KaryawanResource::class;
 
+    protected static ?string $title = 'Data Karyawan';
+
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make(),
+            CreateAction::make()
+                ->label('Tambah Karyawan'),
         ];
     }
 }
